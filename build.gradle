@@ -3,13 +3,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.4'
     }
 }
 
 plugins {
     id 'java'
 }
+
+apply plugin: 'com.google.protobuf'
 
 group = 'org.pp_game'
 version = '1.0'
@@ -19,20 +21,27 @@ repositories {
 }
 
 dependencies {
-//    testImplementation platform('org.junit:junit-bom:5.10.0')
-//    testImplementation 'org.junit.jupiter:junit-jupiter'
-    /**
-     * gRPC
-     */
-    implementation group: 'io.grpc', name: 'grpc-netty-shaded', version: '1.21.0'
-    implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.21.0'
-    implementation group: 'io.grpc', name: 'grpc-stub', version: '1.21.0'
-    implementation "com.google.protobuf:protobuf-java-util:3.8.0"
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.8.0'
+    runtimeOnly group: 'io.grpc', name: 'grpc-netty-shaded', version: '1.64.0'
+    implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.64.0'
+    implementation group: 'io.grpc', name: 'grpc-stub', version: '1.61.0'
+    implementation "com.google.protobuf:protobuf-java-util:4.27.1"
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '4.27.1'
 
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
 }
 
-test {
-    useJUnitPlatform()
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.7"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.64.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }

@@ -1,3 +1,5 @@
+package pp_game;
+
 import java.awt.*;
 
 public class Score extends Rectangle {

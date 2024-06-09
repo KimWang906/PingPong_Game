@@ -1,3 +1,5 @@
+package pp_game;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
