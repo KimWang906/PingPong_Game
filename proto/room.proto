@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.services.room";
+option java_outer_classname = "Room";
+
+package room;
+
+service RoomManager {
+    rpc ListRooms(google.protobuf.Empty) returns (stream Room);
+    rpc CreateRoom(CreateRoomRequest) returns (google.protobuf.Empty);
+    rpc DeleteRoom(DeleteRoomRequest) returns (google.protobuf.Empty);
+    rpc WatchRoomInfo(RoomInfoRequest) returns (stream Room);
+}
+
+service RoomUserManager {
+    rpc JoinRoom(JoinRoomRequest) returns (google.protobuf.Empty);
+    // rpc GetUsers(google.protobuf.Empty) returns (stream RoomUser);
+    rpc LeaveRoom(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+message RoomInfoRequest {
+    uint64 id = 1;
+}
+
+message CreateRoomRequest { 
+    string room_name = 1;
+    MaxRoomSize max_size = 2;
+    string owner_name = 3;
+}
+    
+message DeleteRoomRequest {
+    uint64 id = 1;
+}
+
+message JoinRoomRequest {
+    uint64 id = 1;
+}
+        
+// message LeaveRoomRequest {
+//     string student_id = 1;
+// }
+
+enum RoomStatus {
+    OPEN = 0;
+    CLOSED = 1;
+    FULL = 2;
+}
+
+enum MaxRoomSize {
+    DOUBLE_PLAYERS = 0;
+    QUADRUPLE_PLAYERS = 1;
+}
+
+message RoomUserList {
+    repeated RoomUser users = 1;
+}
+
+message UserList {
+    repeated RoomUser users = 1;
+}
+
+message RoomList {
+    repeated Room rooms = 1;
+}
+
+message RoomUser {
+    string student_id = 1;
+    string username = 2;
+}
+
+message Room {
+    optional RoomStatus status = 1;
+    int64 id = 2;
+    string name = 3;
+    MaxRoomSize max_size = 4;
+    RoomUser owner = 5;
+    RoomUserList members = 6;
+}
