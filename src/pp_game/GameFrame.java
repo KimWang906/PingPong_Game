@@ -2,11 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GameFrame extends JFrame {
-    GamePanel panel;
+    MainPanel main;
 
     GameFrame() {
-        panel = new GamePanel();
-        this.add(panel);
+        main = new MainPanel(this);
+        this.add(main);
+
         this.setTitle("PP Game");
         this.setResizable(false);
         this.setBackground(Color.BLACK);
