@@ -1,0 +1,139 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "username"
+				"font": &Font0 new java.awt.Font( "Arial", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 210
+				"y": 150
+				"width": 180
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usernameLabel"
+				"text": "username"
+				"font": &Font1 new java.awt.Font( "Arial", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 155
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "loginTitle"
+				"text": "PP Game Register"
+				"font": new java.awt.Font( "Arial", 1, 30 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 130
+				"y": 20
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "password"
+				"font": #Font1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 89
+				"height": 24
+				"x": 120
+				"y": 195
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "password"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 210
+				"y": 190
+				"width": 180
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "register"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "executeRegister" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 135
+				"y": 270
+				"width": 110
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "runCloseUserRegisterForm" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 110
+				"height": 34
+				"x": 265
+				"y": 270
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "statusMsg"
+				"text": "Status Message"
+				"font": new java.awt.Font( "Arial", 1, 14 )
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 120
+				"y": 70
+				"width": 310
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "studentIdLabel"
+				"text": "student id"
+				"font": #Font1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 89
+				"height": 24
+				"x": 120
+				"y": 115
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "studentId"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 180
+				"height": 34
+				"x": 210
+				"y": 110
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 500, 360 )
+			"location": new java.awt.Point( 5, 10 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "executeRegister"
+			"$action.Name": "Register"
+			auxiliary() {
+				"JavaCodeGenerator.className": "ExecuteRegister"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 386 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "runCloseUserRegisterForm"
+			"$action.Name": "Back"
+			auxiliary() {
+				"JavaCodeGenerator.className": "CloseUserRegisterForm"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 446 )
+		} )
+	}
+}

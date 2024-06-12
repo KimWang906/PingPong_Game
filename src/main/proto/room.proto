@@ -9,10 +9,11 @@ option java_outer_classname = "RoomProto";
 package room;
 
 service RoomManager {
-    rpc ListRooms(google.protobuf.Empty) returns (stream Room);
-    rpc CreateRoom(CreateRoomRequest) returns (google.protobuf.Empty);
+    rpc ListRooms(google.protobuf.Empty) returns (stream SummaryRoomInfo);
+    rpc CreateRoom(CreateRoomRequest) returns (CreatedRoom);
     rpc DeleteRoom(DeleteRoomRequest) returns (google.protobuf.Empty);
     rpc WatchRoomInfo(RoomInfoRequest) returns (stream Room);
+    rpc ChangeRoomSettings(ChangeRoomSettingsRequest) returns (google.protobuf.Empty);
 }
 
 service RoomUserManager {
@@ -21,8 +22,17 @@ service RoomUserManager {
     rpc LeaveRoom(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
+message CreatedRoom {
+    int64 id = 1;
+}
+
 message RoomInfoRequest {
     uint64 id = 1;
+}
+
+message ChangeRoomSettingsRequest {
+    uint64 id = 1;
+    RoomSettings settings = 2;
 }
 
 message CreateRoomRequest { 
@@ -30,7 +40,7 @@ message CreateRoomRequest {
     MaxRoomSize max_size = 2;
     string owner_name = 3;
 }
-    
+
 message DeleteRoomRequest {
     uint64 id = 1;
 }
@@ -38,15 +48,11 @@ message DeleteRoomRequest {
 message JoinRoomRequest {
     uint64 id = 1;
 }
-        
-// message LeaveRoomRequest {
-//     string student_id = 1;
-// }
 
-enum RoomStatus {
-    OPEN = 0;
-    CLOSED = 1;
-    FULL = 2;
+message RoomSettings {
+    uint32 max_score = 1;
+    uint32 ball_spped = 2;
+    uint32 paddle_speed = 3;
 }
 
 enum MaxRoomSize {
@@ -71,11 +77,17 @@ message RoomUser {
     string username = 2;
 }
 
+message SummaryRoomInfo {
+    int64 id = 1;
+    string name = 2;
+    MaxRoomSize max_size = 3;
+}
+
 message Room {
-    optional RoomStatus status = 1;
-    int64 id = 2;
-    string name = 3;
-    MaxRoomSize max_size = 4;
-    RoomUser owner = 5;
-    RoomUserList members = 6;
+    int64 id = 1;
+    string name = 2;
+    MaxRoomSize max_size = 3;
+    RoomUser owner = 4;
+    RoomUserList members = 5;
+    RoomSettings settings = 6;
 }

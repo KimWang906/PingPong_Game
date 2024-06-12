@@ -1,0 +1,82 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "PP Game"
+			"foreground": sfield java.awt.SystemColor windowText
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "MainTitle"
+				"text": "BSSM Ping Pong Game"
+				"font": new java.awt.Font( "Arial", 1, 30 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 240
+				"y": 75
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "goLogin"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "userLoginForm" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 305
+				"y": 135
+				"width": 210
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "goRegister"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "userRegisterForm" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 210
+				"height": 34
+				"x": 305
+				"y": 175
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "exitGame"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "runExit" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 305
+				"y": 235
+				"width": 210
+				"height": 34
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 10 )
+			"size": new java.awt.Dimension( 800, 480 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "runExit"
+			"$action.Name": "Exit Game"
+			auxiliary() {
+				"JavaCodeGenerator.className": "RunExit"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 506 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "userRegisterForm"
+			"$action.Name": "Register"
+			auxiliary() {
+				"JavaCodeGenerator.className": "GoRegister"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 626 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "userLoginForm"
+			"$action.Name": "Login"
+			auxiliary() {
+				"JavaCodeGenerator.className": "GoLogin"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 686 )
+		} )
+	}
+}

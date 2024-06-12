@@ -20,23 +20,31 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    runtimeOnly group: 'io.grpc', name: 'grpc-netty-shaded', version: '1.64.0'
-    implementation group: 'io.grpc', name: 'grpc-protobuf', version: '1.64.0'
-    implementation group: 'io.grpc', name: 'grpc-stub', version: '1.61.0'
-    implementation "com.google.protobuf:protobuf-java-util:4.27.1"
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '4.27.1'
+def grpcVersion = '1.64.0' // CURRENT_GRPC_VERSION
+def protobufVersion = '3.25.1'
+def protocVersion = protobufVersion
 
+dependencies {
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-services:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    implementation 'com.miglayout:miglayout-swing:5.0'
+    implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+
+    testImplementation "io.grpc:grpc-testing:${grpcVersion}"
+    testImplementation "io.grpc:grpc-inprocess:${grpcVersion}"
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.7"
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.64.0'
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
         }
     }
     generateProtoTasks {

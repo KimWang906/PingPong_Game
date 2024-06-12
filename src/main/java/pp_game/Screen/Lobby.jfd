@@ -1,0 +1,71 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "MainTitle"
+				"text": "BSSM Ping Pong Game"
+				"font": new java.awt.Font( "Arial", 1, 30 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 240
+				"y": 75
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "searchRooms"
+				"font": &Font0 new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "goSearchRooms" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 325
+				"y": 145
+				"width": 160
+				"height": 40
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "settings"
+				"text": "Settings"
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 160
+				"height": 40
+				"x": 325
+				"y": 200
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "exitGame"
+				"font": #Font0
+				"action": new FormReference( "runExitGame" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 160
+				"height": 40
+				"x": 325
+				"y": 295
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 800, 480 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "goSearchRooms"
+			"$action.Name": "Search Rooms"
+			auxiliary() {
+				"JavaCodeGenerator.className": "GoSearchRooms"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 496 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "runExitGame"
+			"$action.Name": "Exit Game"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoExitGame"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 556 )
+		} )
+	}
+}

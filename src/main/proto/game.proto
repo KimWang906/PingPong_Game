@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.services.game";
+option java_outer_classname = "GameProto";
+
+package game;
+
+service GameManager {
+    rpc StartGame(StartGameRequest) returns (InitialGameState);
+    rpc EndGame(google.protobuf.Empty) returns (google.protobuf.Empty);
+    rpc GetGameState(google.protobuf.Empty) returns (GameState);
+    rpc UpdatePaddleState(stream Paddle) returns (stream Paddle);
+    rpc UpdateBallState(stream Ball) returns (stream Ball);
+}
+
+message GameState {
+    string room_name = 1;
+    Ball ball = 2;
+    repeated Player players = 3;
+}
+
+message InitialGameState {
+    InitialBall ball = 1;
+    repeated Player players = 2;
+}
+
+message InitialBall {
+    uint32 x = 1;
+    uint32 y = 2;
+    uint32 width = 3;
+    uint32 height = 4;
+    Ball ball = 5;
+}
+
+message Ball {
+    uint32 x_velocity = 1;
+    uint32 y_velocity = 2;
+    uint32 random_direction = 3;
+    uint32 initial_speed = 4;
+}
+
+message Paddle {
+    uint32 id = 1;
+    uint32 width = 2;
+    uint32 height = 3;
+    uint32 x = 4;
+    uint32 y = 5;
+}
+
+message Player {
+    string username = 1;
+    Paddle paddle = 2;
+    uint32 score = 3;
+}
+
+message StartGameRequest {
+    uint64 room_id = 1;
+    uint32 game_width = 2;
+    uint32 game_height = 3;
+    uint32 paddle_width = 4;
+    uint32 paddle_height = 5;
+    uint32 ball_diameter = 6;
+}

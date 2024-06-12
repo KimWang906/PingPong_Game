@@ -1,0 +1,113 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "PP Game"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollRoomList"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "roomList"
+					"font": new java.awt.Font( "Arial", 0, 14 )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 10
+				"y": 50
+				"width": 445
+				"height": 395
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "searchRoomsLabel"
+				"text": "Search Rooms"
+				"font": new java.awt.Font( "Arial", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 10
+				"y": 15
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "enterRoom"
+				"font": &Font0 new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "doEnterRoom" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 130
+				"height": 34
+				"x": 655
+				"y": 405
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"font": #Font0
+				"action": new FormReference( "doBackLobby" )
+				"preferredSize": new java.awt.Dimension( 115, 25 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 115
+				"height": 34
+				"x": 530
+				"y": 405
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "refreshRooms"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "doRefreshRooms" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 460
+				"y": 50
+				"width": 130
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "createRoom"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "doCreateRoom" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 460
+				"y": 90
+				"width": 130
+				"height": 34
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 800, 480 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "doBackLobby"
+			"$action.Name": "Back"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoBackLobby"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 496 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "doEnterRoom"
+			"$action.Name": "Enter Room"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoEnterRoom"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 556 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "doRefreshRooms"
+			"$action.Name": "Refresh"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoRefreshRooms"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 616 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "doCreateRoom"
+			"$action.Name": "Create Room"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoCreateRoom"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 676 )
+		} )
+	}
+}

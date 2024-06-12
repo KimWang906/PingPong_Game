@@ -1,0 +1,109 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "newRoomLabel"
+				"text": "New Room"
+				"font": new java.awt.Font( "Arial", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 105
+				"height": 24
+				"x": 195
+				"y": 40
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "roomNameLabel"
+				"text": "Room Name"
+				"font": &Font0 new java.awt.Font( "Arial", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 119
+				"height": 24
+				"x": 85
+				"y": 105
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "maxSizeLabel"
+				"text": "Max Size"
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 89
+				"height": 24
+				"x": 115
+				"y": 145
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "roomName"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 180
+				"height": 34
+				"x": 205
+				"y": 100
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "maxSize"
+				"font": new java.awt.Font( "Arial", 0, 16 )
+				"selectedIndex": -1
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 205
+				"y": 140
+				"width": 180
+				"height": 34
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "createRoom"
+				"font": &Font1 new java.awt.Font( "Arial", 0, 16 )
+				"action": new FormReference( "excuteNewRoom" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 270
+				"y": 230
+				"height": 34
+				"width": 160
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back"
+				"font": #Font1
+				"action": new FormReference( "doBackSearchRooms" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 160
+				"height": 34
+				"x": 95
+				"y": 230
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 500, 360 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "excuteNewRoom"
+			"$action.Name": "Create new Room"
+			auxiliary() {
+				"JavaCodeGenerator.className": "ExecuteNewRoom"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 376 )
+		} )
+		add( new FormNonVisual( "javax.swing.AbstractAction" ) {
+			name: "doBackSearchRooms"
+			"$action.Name": "Back"
+			auxiliary() {
+				"JavaCodeGenerator.className": "DoBackSearchRooms"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 436 )
+		} )
+	}
+}
